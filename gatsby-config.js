@@ -11,6 +11,7 @@ module.exports = {
             options: {
                 projectId: process.env.SANITY_PROJECT_ID,
                 dataset: 'production',
+                useCdn: true,
             },
         },
         'gatsby-plugin-sharp',
