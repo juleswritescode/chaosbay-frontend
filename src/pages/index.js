@@ -10,6 +10,7 @@ import DesktopMenu from '../containers/DesktopMenu';
 
 function App({ data }) {
     const [mobileMenu, setMobileMenu] = useState(false);
+    const [initLoad, setInitLoad] = useState(false);
 
     const headingEl = useRef(null);
     const overlayEl = useRef(null);
@@ -91,6 +92,9 @@ function App({ data }) {
         });
         tl.set(impressum, {
             opacity: 0,
+        });
+        tl.set(line, {
+            x: '-100%',
         });
 
         // Actual Animation
@@ -241,7 +245,13 @@ function App({ data }) {
     return (
         <main className="relative flex items-center justify-center px-6 w-screen h-screen main-wrapper font-rubik p-8">
             <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center overflow-hidden px-6">
-                {!mobileMenu && <SocialIcons ref={socialEl} className="z-30" />}
+                {!mobileMenu && (
+                    <SocialIcons
+                        ref={socialEl}
+                        initLoad={initLoad}
+                        className="z-30"
+                    />
+                )}
 
                 {!mobileMenu && (
                     <Heading
@@ -276,11 +286,11 @@ function App({ data }) {
                 <button
                     onClick={() => setMobileMenu(true)}
                     ref={buttonEl}
-                    className="lg:hidden inline-block invisible text-center absolute bottom-0 w-full pb-4 text-gray-700 text-lg uppercase tracking-widest font-semibold focus:bg-primary focus:text-black transition duration-100"
+                    className={`lg:hidden inline-block text-center absolute bottom-0 w-full pb-4 text-gray-700 text-lg uppercase tracking-widest font-semibold focus:bg-primary focus:text-black transition duration-100 `}
                 >
                     <div
                         ref={goldenLineEl}
-                        className="h-1 bg-primary w-full mb-4 transform -translate-x-full"
+                        className="h-1 bg-primary w-full mb-4 transform"
                     ></div>
                     More
                 </button>
@@ -290,7 +300,7 @@ function App({ data }) {
             )}
             {!mobileMenu && (
                 <a
-                    className="hidden md:inline-block absolute bottom-0 right-0 p-4 text-gray-500 border-b-2 pb-1 border-transparent hover:border-gray-500"
+                    className="hidden lg:inline-block absolute bottom-0 right-0 p-4 text-gray-500 border-b-2 pb-1 border-transparent hover:border-gray-500"
                     href="/impressum"
                     target="_blank"
                 >
