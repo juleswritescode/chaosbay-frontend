@@ -10,7 +10,6 @@ import DesktopMenu from '../containers/DesktopMenu';
 
 function App({ data }) {
     const [mobileMenu, setMobileMenu] = useState(false);
-    const [initLoad, setInitLoad] = useState(false);
 
     const headingEl = useRef(null);
     const overlayEl = useRef(null);
@@ -26,19 +25,16 @@ function App({ data }) {
         if (!isBrowser()) return;
 
         let vh = window.innerHeight * 0.01;
-
         document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-        function setViewportHeight() {
-            let vh = window.innerHeight * 0.01;
-            document.documentElement.style.setProperty('--vh', `${vh}px`);
-        }
-
         window.addEventListener('resize', setViewportHeight);
 
         return () => {
             window.removeEventListener('resize', setViewportHeight);
         };
+        function setViewportHeight() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
     }, []);
 
     useEffect(() => {

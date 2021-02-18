@@ -6,7 +6,6 @@ import { onKey } from '../utils/onKey';
 
 import MobileAlbumButton from '../components/MobileAlbumButton';
 import MobileShell from './MobileShell';
-import Loading from '../components/Loading';
 import About from '../components/About';
 import Contact from '../components/Contact';
 import Dates from '../components/Dates';
