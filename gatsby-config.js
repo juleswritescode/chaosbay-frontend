@@ -1,24 +1,19 @@
+require('dotenv').config();
+
 module.exports = {
-  siteMetadata: {
-    title: "Chaosbay",
-  },
-  plugins: [
-    {
-      resolve: "gatsby-source-sanity",
-      options: {
-        projectId: "8me5yfa8",
-        dataset: "",
-      },
+    siteMetadata: {
+        title: 'Chaosbay | ASYLUM',
     },
-    "gatsby-plugin-sharp",
-    "gatsby-transformer-sharp",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "images",
-        path: "./src/images/",
-      },
-      __key: "images",
-    },
-  ],
+    plugins: [
+        'gatsby-plugin-postcss',
+        {
+            resolve: 'gatsby-source-sanity',
+            options: {
+                projectId: process.env.SANITY_PROJECT_ID,
+                dataset: 'production',
+            },
+        },
+        'gatsby-plugin-sharp',
+        'gatsby-transformer-sharp',
+    ],
 };

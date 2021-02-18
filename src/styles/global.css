@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&family=Rubik:wght@300;400;500;600&display=swap');
+
+:root {
+    --vh: 1vh;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .h-screen {
+        height: 100vh;
+        height: calc(100 * var(--vh));
+    }
+
+    .text-primary {
+        color: hsl(46, 56%, 64%);
+    }
+
+    .border-color-primary {
+        border-color: hsl(46, 56%, 64%);
+    }
+
+    .bg-primary {
+        background-color: hsl(46, 56%, 64%);
+    }
+
+    @variants hover {
+        .text-primary {
+            color: hsl(46, 56%, 64%);
+        }
+
+        .border-color-primary {
+            border-color: hsl(46, 56%, 64%);
+        }
+
+        .bg-primary {
+            background-color: hsl(46, 56%, 64%);
+        }
+    }
+}

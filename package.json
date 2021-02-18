@@ -15,13 +15,28 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
+    "dotenv": "^8.2.0",
     "gatsby": "^2.32.3",
     "gatsby-image": "^2.11.0",
     "gatsby-plugin-sharp": "^2.14.1",
     "gatsby-source-filesystem": "^2.11.0",
     "gatsby-source-sanity": "^6.0.5",
     "gatsby-transformer-sharp": "^2.12.0",
+    "gsap": "^3.6.0",
+    "luxon": "^1.26.0",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-helmet": "^6.1.0",
+    "react-icons": "^4.2.0",
+    "react-player": "^2.9.0",
+    "simple-react-lightbox": "^3.6.3",
+    "validator": "^13.5.2"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.2.4",
+    "gatsby-plugin-postcss": "^3.7.0",
+    "postcss": "^8.2.6",
+    "tailwindcss": "^2.0.3"
   }
 }

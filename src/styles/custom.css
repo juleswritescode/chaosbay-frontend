@@ -1,0 +1,60 @@
+* {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+*::-webkit-scrollbar {
+    display: none;
+}
+
+.main-logo {
+    width: 80vw;
+    color: hsl(213.8, 20.3%, 69%);
+}
+
+.about-pic {
+    clip-path: polygon(0 4%, 98% 0, 100% 2%, 100% 96%, 0 100%);
+}
+
+.about-text {
+    hyphens: none;
+}
+
+.album-artwork {
+    height: 20rem;
+    width: 100%;
+}
+
+.main-wrapper {
+    background: linear-gradient(
+        10deg,
+        hsl(230, 20%, 80%) 10%,
+        hsl(220, 10%, 40%)
+    );
+}
+
+.content-wrapper {
+    max-width: 1024px;
+    max-height: 92vh;
+    min-height: 8rem;
+}
+
+@media (min-width: 1024px) {
+    .main-logo {
+        width: 50vw;
+    }
+
+    .main-heading {
+        width: 55vw;
+    }
+}
+
+@media (min-width: 1600px) {
+    .main-logo {
+        width: 40vw;
+    }
+
+    .main-heading {
+        width: 50vw;
+    }
+}

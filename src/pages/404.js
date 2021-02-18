@@ -1,54 +1,20 @@
-import * as React from "react"
-import { Link } from "gatsby"
+import React from 'react';
+import { Link } from 'gatsby';
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+export default function NotFound() {
+    return (
+        <div className="fixed top-0 left-0 w-screen h-screen bg-opacity-75 bg-black flex justify-center items-center">
+            <div className="rounded bg-white py-8 px-12 max-w-xl text-center">
+                <p className="mb-8 text-2xl">
+                    This page couldn't be found! <br />
+                    Get back the main page, please.
+                </p>
 
-const paragraphStyles = {
-  marginBottom: 48,
+                <Link className="text-primary text-xl hover:underline" to="/">
+                    Take me back to the paradise city where the grass is green
+                    and the girls are pretty
+                </Link>
+            </div>
+        </div>
+    );
 }
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-
-// markup
-const NotFoundPage = () => {
-  return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
-  )
-}
-
-export default NotFoundPage
