@@ -246,18 +246,13 @@ function App({ data }) {
         <main className="relative flex items-center justify-center px-6 w-screen h-screen main-wrapper font-rubik p-8">
             <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center overflow-hidden px-6">
                 {!mobileMenu && (
-                    <SocialIcons
-                        ref={socialEl}
-                        initLoad={initLoad}
-                        className="z-30"
-                    />
+                    <SocialIcons ref={socialEl} isFrontScreen={true} />
                 )}
 
                 {!mobileMenu && (
                     <Heading
                         ref={headingEl}
                         className="z-10 w-full main-heading"
-                        style={{ opacity: 0 }}
                     />
                 )}
                 <div
