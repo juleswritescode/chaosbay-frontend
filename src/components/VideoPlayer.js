@@ -23,7 +23,11 @@ const VideoPlayer = ({ url }) => {
                 onReady={() => setLoading(false)}
                 config={{
                     youtube: {
-                        playerVars: { modestbranding: 1, controls: true },
+                        playerVars: {
+                            modestbranding: 1,
+                            controls: true,
+                            fs: 1,
+                        },
                     },
                 }}
             />
