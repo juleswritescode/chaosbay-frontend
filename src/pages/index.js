@@ -254,11 +254,6 @@ function App({ data }) {
                         <Heading
                             ref={headingEl}
                             className={`z-10 w-full main-heading`}
-                            style={{
-                                visibility: animationHappened
-                                    ? 'visible'
-                                    : 'invisible',
-                            }}
                         />
                     )}
                     <div
