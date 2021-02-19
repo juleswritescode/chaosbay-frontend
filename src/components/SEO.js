@@ -38,18 +38,9 @@ export default function SEO() {
 
             {/* Opengraph */}
             <meta property="og:url" content="www.chaosbay.com" />
-            <meta
-                property="og:site_name"
-                content="www.chaosbay.com"
-                key="ogsitename"
-            />
             <meta property="og:type" content="website" />
-            <meta property="og:title" content={seo.title} key="ogtitle" />
-            <meta
-                property="og:description"
-                content={seo.description}
-                key="ogdesc"
-            />
+            <meta property="og:title" content={seo.title} />
+            <meta property="og:description" content={seo.description} />
             <meta property="og:image" content={seo.image.asset.fbImage.src} />
             <meta property="og:image:type" content="image/jpeg" />
             <meta property="og:image:width" content="1200" />
