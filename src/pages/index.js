@@ -57,58 +57,58 @@ function App({ data }) {
         tl.set(heading, {
             opacity: 0,
             autoAlpha: 0,
-        });
+        })
 
-        tl.set(overlay, {
-            opacity: 0,
-        });
+            .set(overlay, {
+                opacity: 0,
+            })
 
-        tl.set(logo, {
-            rotation: -50,
-            scale: 0.8,
-            opacity: 0.1,
-            filter: 'brightness(50%)',
-        });
+            .set(logo, {
+                rotation: -50,
+                scale: 0.8,
+                opacity: 0.1,
+                filter: 'brightness(50%)',
+            })
 
-        tl.set(menu, {
-            x: '105%',
-            autoAlpha: 0,
-        });
+            .set(menu, {
+                x: '105%',
+                autoAlpha: 0,
+            })
 
-        tl.set(div, {
-            x: '-105%',
-            top: '90%',
-        });
+            .set(div, {
+                x: '-105%',
+                top: '90%',
+            })
 
-        tl.set(button, {
-            autoAlpha: 0,
-            y: 100,
-        });
+            .set(button, {
+                autoAlpha: 0,
+                y: 100,
+            })
 
-        tl.set(social, {
-            opacity: 0,
-            autoAlpha: 0,
-        });
-        tl.set(impressum, {
-            opacity: 0,
-        });
-        tl.set(line, {
-            x: '-100%',
-        });
+            .set(social, {
+                opacity: 0,
+                autoAlpha: 0,
+            })
+            .set(impressum, {
+                opacity: 0,
+            })
+            .set(line, {
+                x: '-100%',
+            })
 
-        // Actual Animation
-        tl.addLabel('logo-onscreen');
-        tl.to(
-            logo,
-            {
-                rotation: 20,
-                scale: 1.2,
-                duration: 3,
-                opacity: 1,
-                ease: 'power1',
-            },
-            'logo-onscreen+=0'
-        )
+            // Actual Animation
+            .addLabel('logo-onscreen')
+            .to(
+                logo,
+                {
+                    rotation: 20,
+                    scale: 1.2,
+                    duration: 3,
+                    opacity: 1,
+                    ease: 'power1',
+                },
+                'logo-onscreen+=0'
+            )
             .addLabel('logo-appeared')
             .to(
                 logo,
