@@ -7,6 +7,7 @@ import Heading from '../components/Heading';
 import MobileMenu from '../containers/MobileMenu';
 import SocialIcons from '../components/SocialIcons';
 import DesktopMenu from '../containers/DesktopMenu';
+import SEO from '../components/SEO';
 
 function App({ data }) {
     const [mobileMenu, setMobileMenu] = useState(false);
@@ -210,8 +211,7 @@ function App({ data }) {
                     yoyo: true,
                 },
                 'intro-finished+=0'
-            )
-            .call(() => setAnimationHappened(true), 'intro-finished+=0');
+            );
     }, []);
 
     function moveMenuToTop() {
@@ -242,71 +242,77 @@ function App({ data }) {
     }
 
     return (
-        <main className="relative flex items-center justify-center px-6 w-screen h-screen main-wrapper font-rubik p-8">
-            <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center overflow-hidden px-6">
-                {!mobileMenu && (
-                    <SocialIcons ref={socialEl} isFrontScreen={true} />
-                )}
+        <>
+            <SEO />
+            <main className="relative flex items-center justify-center px-6 w-screen h-screen main-wrapper font-rubik p-8">
+                <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center overflow-hidden px-6">
+                    {!mobileMenu && (
+                        <SocialIcons ref={socialEl} isFrontScreen={true} />
+                    )}
 
+                    {!mobileMenu && (
+                        <Heading
+                            ref={headingEl}
+                            className={`z-10 w-full main-heading`}
+                            style={{
+                                visibility: animationHappened
+                                    ? 'visible'
+                                    : 'invisible',
+                            }}
+                        />
+                    )}
+                    <div
+                        ref={overlayEl}
+                        className="absolute w-full h-full top-0 left-0 bg-white opacity-0"
+                    ></div>
+                    <Logo
+                        ref={logoEl}
+                        className="absolute text-gray-500 main-logo opacity-0"
+                    />
+                </div>
+                {/* Desktop Menu */}
+                <div
+                    ref={divEl}
+                    className="hidden lg:flex absolute mx-auto overflow-x-hidden mb-12 p-4 z-20 transform -translate-y-32 w-4/5 content-wrapper flex-col rounded"
+                >
+                    <DesktopMenu
+                        data={data}
+                        ref={menuEl}
+                        moveMenuToTop={moveMenuToTop}
+                        moveMenuToBottom={moveMenuToBottom}
+                    />
+                </div>
+                {/* Mobile Button */}
                 {!mobileMenu && (
-                    <Heading
-                        ref={headingEl}
-                        className={`z-10 w-full main-heading`}
-                        style={{
-                            visibility: animationHappened
-                                ? 'visible'
-                                : 'invisible',
-                        }}
+                    <button
+                        onClick={() => setMobileMenu(true)}
+                        ref={buttonEl}
+                        className={`lg:hidden inline-block text-center absolute bottom-0 w-full pb-4 text-gray-700 text-lg uppercase tracking-widest font-semibold focus:bg-primary focus:text-black transition duration-100 `}
+                    >
+                        <div
+                            ref={goldenLineEl}
+                            className="h-1 bg-primary w-full mb-4 transform"
+                        ></div>
+                        More
+                    </button>
+                )}
+                {mobileMenu && (
+                    <MobileMenu
+                        data={data}
+                        toggle={() => setMobileMenu(false)}
                     />
                 )}
-                <div
-                    ref={overlayEl}
-                    className="absolute w-full h-full top-0 left-0 bg-white opacity-0"
-                ></div>
-                <Logo
-                    ref={logoEl}
-                    className="absolute text-gray-500 main-logo opacity-0"
-                />
-            </div>
-            {/* Desktop Menu */}
-            <div
-                ref={divEl}
-                className="hidden lg:flex absolute mx-auto overflow-x-hidden mb-12 p-4 z-20 transform -translate-y-32 w-4/5 content-wrapper flex-col rounded"
-            >
-                <DesktopMenu
-                    data={data}
-                    ref={menuEl}
-                    moveMenuToTop={moveMenuToTop}
-                    moveMenuToBottom={moveMenuToBottom}
-                />
-            </div>
-            {/* Mobile Button */}
-            {!mobileMenu && (
-                <button
-                    onClick={() => setMobileMenu(true)}
-                    ref={buttonEl}
-                    className={`lg:hidden inline-block text-center absolute bottom-0 w-full pb-4 text-gray-700 text-lg uppercase tracking-widest font-semibold focus:bg-primary focus:text-black transition duration-100 `}
-                >
-                    <div
-                        ref={goldenLineEl}
-                        className="h-1 bg-primary w-full mb-4 transform"
-                    ></div>
-                    More
-                </button>
-            )}
-            {mobileMenu && (
-                <MobileMenu data={data} toggle={() => setMobileMenu(false)} />
-            )}
-            {!mobileMenu && (
-                <a
-                    className="hidden lg:inline-block absolute bottom-0 right-0 p-4 text-gray-500 border-b-2 pb-1 border-transparent hover:border-gray-500"
-                    href="/impressum"
-                    target="_blank"
-                >
-                    Impressum
-                </a>
-            )}
-        </main>
+                {!mobileMenu && (
+                    <a
+                        className="hidden lg:inline-block absolute bottom-0 right-0 p-4 text-gray-500 border-b-2 pb-1 border-transparent hover:border-gray-500"
+                        href="/impressum"
+                        target="_blank"
+                    >
+                        Impressum
+                    </a>
+                )}
+            </main>
+        </>
     );
 }
 

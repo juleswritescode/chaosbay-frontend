@@ -1,9 +1,6 @@
 require('dotenv').config();
 
 module.exports = {
-    siteMetadata: {
-        title: 'Chaosbay | ASYLUM',
-    },
     plugins: [
         'gatsby-plugin-postcss',
         {
@@ -16,5 +13,6 @@ module.exports = {
         },
         'gatsby-plugin-sharp',
         'gatsby-transformer-sharp',
+        'gatsby-plugin-offline',
     ],
 };
