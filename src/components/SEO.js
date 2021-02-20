@@ -22,6 +22,8 @@ export default function SEO() {
                 showEvents
                 location
                 events {
+                    name
+                    address
                     location
                     offers
                     startDate
@@ -44,6 +46,8 @@ export default function SEO() {
             }
         }
     `);
+
+    console.log(seo);
 
     return (
         <Helmet defaultTitle="Chaosbay" titleTemplate="Chaosbay | %s">
