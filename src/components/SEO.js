@@ -47,8 +47,6 @@ export default function SEO() {
         }
     `);
 
-    console.log(seo);
-
     return (
         <Helmet defaultTitle="Chaosbay" titleTemplate="Chaosbay | %s">
             {/* General */}
