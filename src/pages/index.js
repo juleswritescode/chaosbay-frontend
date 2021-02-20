@@ -10,8 +10,7 @@ import DesktopMenu from '../containers/DesktopMenu';
 import SEO from '../components/SEO';
 
 function App({ data }) {
-    const [mobileMenu, setMobileMenu] = useState(false);
-    const [animationHappened, setAnimationHappened] = useState(false);
+    const [mobileMenu, setMobileMenu] = useState(null);
 
     const headingEl = useRef(null);
     const overlayEl = useRef(null);
@@ -253,7 +252,9 @@ function App({ data }) {
                     {!mobileMenu && (
                         <Heading
                             ref={headingEl}
-                            className={`z-10 w-full main-heading`}
+                            className={`z-10 w-full main-heading ${
+                                mobileMenu === null && 'opacity-0'
+                            } ${mobileMenu === true && 'opacity-0'}`}
                         />
                     )}
                     <div
