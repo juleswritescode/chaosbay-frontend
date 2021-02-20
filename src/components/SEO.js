@@ -19,6 +19,28 @@ export default function SEO() {
                         }
                     }
                 }
+                showEvents
+                location
+                events {
+                    location
+                    offers
+                    startDate
+                    url
+                }
+                seoRelease {
+                    name
+                    albumReleaseType
+                    url
+                    genre
+                    numTracks
+                    image {
+                        asset {
+                            fixed(width: 800) {
+                                src
+                            }
+                        }
+                    }
+                }
             }
         }
     `);
@@ -49,6 +71,48 @@ export default function SEO() {
             {/* Twitter */}
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image" content={seo.image.asset.twImage.src} />
+
+            {/* Structured Data */}
+            <script type="application/ld+json">
+                {`
+                {
+                    "@context": "https://schema.org",
+                    "@type": "MusicGroup",
+                    "name": "Chaosbay",
+                    "description": "${seo.description}",
+                    "url": "https://www.chaosbay.com",
+                    "image": "${seo.image.asset.fbImage.src}",
+                    "location": "${seo.location}",
+                    "album": {
+                        "albumProductionType": "Studio Album",
+                        "albumReleaseType": "${
+                            seo.seoRelease.albumReleaseType
+                        }",
+                         "genre": "${seo.seoRelease.genre}",
+                         "name": "${seo.seoRelease.name}",
+                         "numTracks": "${seo.seoRelease.numTracks}",
+                         "url": "${seo.seoRelease.url}",
+                         "image": "${seo.seoRelease.image.asset.fixed.src}"
+                    },
+                    "events": ${
+                        seo.showEvents
+                            ? JSON.stringify(
+                                  seo.events.map(function renderEvent(event) {
+                                      return {
+                                          offers: event.offers,
+                                          location: event.location,
+                                          startDate: event.startDate,
+                                          url: event.url,
+                                      };
+                                  }),
+                                  null,
+                                  2
+                              )
+                            : ''
+                    }
+                }
+            `}
+            </script>
         </Helmet>
     );
 }
