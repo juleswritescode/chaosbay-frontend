@@ -101,6 +101,7 @@ export default function SEO() {
                             ? JSON.stringify(
                                   seo.events.map(function renderEvent(event) {
                                       return {
+                                          '@type': 'Event',
                                           name: event.name,
                                           address: event.address,
                                           offers: event.offers,
