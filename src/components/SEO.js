@@ -59,7 +59,7 @@ export default function SEO() {
             <link rel="icon" type="image/png" href="/favicon.png" />
 
             {/* Opengraph */}
-            <meta property="og:url" content="www.chaosbay.com" />
+            <meta property="og:url" content="https://www.chaosbay.com" />
             <meta property="og:type" content="website" />
             <meta property="og:title" content={seo.title} />
             <meta property="og:description" content={seo.description} />
