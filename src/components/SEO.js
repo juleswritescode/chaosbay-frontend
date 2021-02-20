@@ -97,7 +97,7 @@ export default function SEO() {
                          "url": "${seo.seoRelease.url}",
                          "image": "${seo.seoRelease.image.asset.fixed.src}"
                     },
-                    "events": ${
+                    "event": ${
                         seo.showEvents
                             ? JSON.stringify(
                                   seo.events.map(function renderEvent(event) {
