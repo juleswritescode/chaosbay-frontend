@@ -104,9 +104,12 @@ export default function SEO() {
                                       return {
                                           '@type': 'Event',
                                           name: event.name,
-                                          address: event.address,
                                           offers: event.offers,
-                                          location: event.location,
+                                          location: {
+                                              '@type': 'Place',
+                                              name: event.location,
+                                              address: event.address,
+                                          },
                                           startDate: event.startDate,
                                           url: event.url,
                                       };
