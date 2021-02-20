@@ -86,6 +86,7 @@ export default function SEO() {
                     "image": "${seo.image.asset.fbImage.src}",
                     "location": "${seo.location}",
                     "album": {
+                        "@type": "MusicAlbum",
                         "albumProductionType": "Studio Album",
                         "albumReleaseType": "${
                             seo.seoRelease.albumReleaseType
