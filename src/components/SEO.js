@@ -99,6 +99,8 @@ export default function SEO() {
                             ? JSON.stringify(
                                   seo.events.map(function renderEvent(event) {
                                       return {
+                                          name: event.name,
+                                          address: event.address,
                                           offers: event.offers,
                                           location: event.location,
                                           startDate: event.startDate,
