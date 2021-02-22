@@ -58,6 +58,7 @@ export default function SEO() {
                 name="viewport"
                 content="width=device-width, initial-scale=1.0"
             />
+            <meta name="robots" content="noodp,noydir" />
             <link rel="icon" type="image/png" href="/favicon.png" />
 
             {/* Opengraph */}
