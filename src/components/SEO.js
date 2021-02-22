@@ -74,6 +74,79 @@ export default function SEO() {
             <meta name="twitter:card" content="summary_large_image" />
             <meta name="twitter:image" content={seo.image.asset.twImage.src} />
 
+            {/* Mobile */}
+            <link rel="manifest" href="/manifest.json" />
+            <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+            <link
+                rel="apple-touch-icon"
+                sizes="57x57"
+                href="/mobile-icons/57.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="60x60"
+                href="/mobile-icons/60.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="72x72"
+                href="/mobile-icons/72.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="76x76"
+                href="/mobile-icons/76.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="114x114"
+                href="/mobile-icons/80.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="120x120"
+                href="/mobile-icons/120.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="144x144"
+                href="/mobile-icons/144.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="152x152"
+                href="/mobile-icons/152.png"
+            />
+            <link
+                rel="apple-touch-icon"
+                sizes="180x180"
+                href="/mobile-icons/180.png"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                href="/mobile-icons/16.png"
+                sizes="16x16"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                href="/mobile-icons/32.png"
+                sizes="32x32"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                href="/mobile-icons/96.png"
+                sizes="96x96"
+            />
+            <link
+                rel="icon"
+                type="image/png"
+                href="/mobile-icons/192.png"
+                sizes="192x192"
+            />
+
             {/* Structured Data */}
             <script type="application/ld+json">
                 {`
