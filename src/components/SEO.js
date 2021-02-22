@@ -137,13 +137,13 @@ export default function SEO() {
             <link
                 rel="icon"
                 type="image/png"
-                href="/mobile-icons/96.png"
+                href="/mobile-icons/100.png"
                 sizes="96x96"
             />
             <link
                 rel="icon"
                 type="image/png"
-                href="/mobile-icons/192.png"
+                href="/mobile-icons/196.png"
                 sizes="192x192"
             />
 
