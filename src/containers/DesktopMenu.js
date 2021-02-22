@@ -1,12 +1,17 @@
-import React, { forwardRef, useState, Suspense, useEffect } from 'react';
+import React, { forwardRef, useState, Suspense } from 'react';
 import Shell from './Shell';
 
 import Loading from '../components/Loading';
-import About from '../components/About';
-import Dates from '../components/Dates';
-import Media from '../components/Media';
-import Contact from '../components/Contact';
+// import About from '../components/About';
+// import Dates from '../components/Dates';
+// import Media from '../components/Media';
+// import Contact from '../components/Contact';
 import { onKey } from '../utils/onKey';
+
+const About = React.lazy(() => import('../components/About'));
+const Contact = React.lazy(() => import('../components/Contact'));
+const Dates = React.lazy(() => import('../components/Dates'));
+const Media = React.lazy(() => import('../components/Media'));
 
 const DesktopMenu = forwardRef(
     ({ moveMenuToTop, moveMenuToBottom, data = {} }, ref) => {

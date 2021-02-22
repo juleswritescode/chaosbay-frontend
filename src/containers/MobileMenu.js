@@ -6,10 +6,16 @@ import { onKey } from '../utils/onKey';
 
 import MobileAlbumButton from '../components/MobileAlbumButton';
 import MobileShell from './MobileShell';
-import About from '../components/About';
-import Contact from '../components/Contact';
-import Dates from '../components/Dates';
-import Media from '../components/Media';
+import Loading from '../components/Loading';
+// import About from '../components/About';
+// import Contact from '../components/Contact';
+// import Dates from '../components/Dates';
+// import Media from '../components/Media';
+
+const About = React.lazy(() => import('../components/About'));
+const Contact = React.lazy(() => import('../components/Contact'));
+const Dates = React.lazy(() => import('../components/Dates'));
+const Media = React.lazy(() => import('../components/Media'));
 
 const MobileMenu = ({ toggle, data }) => {
     const wrapperEl = useRef(null);
@@ -66,13 +72,15 @@ const MobileMenu = ({ toggle, data }) => {
                 {active === 'about' && (
                     <li role="button">
                         <MobileShell>
-                            <About
-                                content={data.about}
-                                w={500}
-                                h={500}
-                                headingStyle={'text-center'}
-                                textStyle={'about-text'}
-                            />
+                            <Suspense fallback={<Loading />}>
+                                <About
+                                    content={data.about}
+                                    w={500}
+                                    h={500}
+                                    headingStyle={'text-center'}
+                                    textStyle={'about-text'}
+                                />
+                            </Suspense>
                         </MobileShell>
                     </li>
                 )}
@@ -88,12 +96,14 @@ const MobileMenu = ({ toggle, data }) => {
                 {active === 'dates' && (
                     <li role="button">
                         <MobileShell>
-                            <Dates
-                                headingStyle={'invisible mb-0'}
-                                linkStyle={
-                                    'text-gray-900 w-full text-center mt-2'
-                                }
-                            />
+                            <Suspense fallback={<Loading />}>
+                                <Dates
+                                    headingStyle={'invisible mb-0'}
+                                    linkStyle={
+                                        'text-gray-900 w-full text-center mt-2'
+                                    }
+                                />
+                            </Suspense>
                         </MobileShell>
                     </li>
                 )}
@@ -109,13 +119,15 @@ const MobileMenu = ({ toggle, data }) => {
                 {active === 'media' && (
                     <li role="button">
                         <MobileShell>
-                            <Media
-                                content={data.media}
-                                headingStyle={'invisible mb-0'}
-                                linkStyle={
-                                    'text-gray-900 w-full text-center mt-2'
-                                }
-                            />
+                            <Suspense fallback={<Loading />}>
+                                <Media
+                                    content={data.media}
+                                    headingStyle={'invisible mb-0'}
+                                    linkStyle={
+                                        'text-gray-900 w-full text-center mt-2'
+                                    }
+                                />
+                            </Suspense>
                         </MobileShell>
                     </li>
                 )}
@@ -131,7 +143,9 @@ const MobileMenu = ({ toggle, data }) => {
                 {active === 'contact' && (
                     <li role="button">
                         <MobileShell>
-                            <Contact />
+                            <Suspense fallback={<Loading />}>
+                                <Contact />
+                            </Suspense>
                         </MobileShell>
                     </li>
                 )}

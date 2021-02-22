@@ -75,6 +75,12 @@ export default function SEO() {
             <meta name="twitter:image" content={seo.image.asset.twImage.src} />
 
             {/* Mobile */}
+            <meta name="apple-mobile-web-capable" content="yes" />
+            <meta
+                name="apple-mobile-web-app-status-bar-style"
+                content="black"
+            />
+            <meta name="apple-mobile-web-abb-title" content="Chaosbay" />
             <link rel="manifest" href="/manifest.json" />
             <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
             <link
