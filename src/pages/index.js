@@ -243,7 +243,8 @@ function App({ data }) {
     return (
         <>
             <SEO />
-            <main className="relative flex items-center justify-center px-6 w-screen h-screen main-wrapper font-rubik p-8">
+            <h1 className="sr-only">Chaosbay</h1>
+            <div className="relative flex items-center justify-center px-6 w-screen h-screen main-wrapper font-rubik p-8">
                 <div className="w-full h-full absolute top-0 left-0 flex items-center justify-center overflow-hidden px-6">
                     {!mobileMenu && (
                         <SocialIcons ref={socialEl} isFrontScreen={true} />
@@ -251,6 +252,7 @@ function App({ data }) {
 
                     {!mobileMenu && (
                         <Heading
+                            role="heading"
                             ref={headingEl}
                             className={`z-10 w-full main-heading ${
                                 mobileMenu === null && 'opacity-0'
@@ -263,11 +265,12 @@ function App({ data }) {
                     ></div>
                     <Logo
                         ref={logoEl}
+                        aria-label="Chaosbay"
                         className="absolute text-gray-500 main-logo opacity-0"
                     />
                 </div>
                 {/* Desktop Menu */}
-                <div
+                <main
                     ref={divEl}
                     className="hidden lg:flex absolute mx-auto overflow-x-hidden mb-12 p-4 z-20 transform -translate-y-32 w-4/5 content-wrapper flex-col rounded"
                 >
@@ -277,7 +280,7 @@ function App({ data }) {
                         moveMenuToTop={moveMenuToTop}
                         moveMenuToBottom={moveMenuToBottom}
                     />
-                </div>
+                </main>
                 {/* Mobile Button */}
                 {!mobileMenu && (
                     <button
@@ -307,7 +310,7 @@ function App({ data }) {
                         Impressum
                     </a>
                 )}
-            </main>
+            </div>
         </>
     );
 }

@@ -2,11 +2,16 @@
 
 :root {
     --vh: 1vh;
+    --primary: hsl(46, 56%, 64%);
 }
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.nav-button {
+    @apply uppercase font-medium transition duration-300 cursor-pointer border-b-4 border-transparent mx-10 font-light tracking-wider;
+}
 
 @layer utilities {
     .h-screen {
@@ -15,28 +20,28 @@
     }
 
     .text-primary {
-        color: hsl(46, 56%, 64%);
+        color: var(--primary);
     }
 
     .border-color-primary {
-        border-color: hsl(46, 56%, 64%);
+        border-color: var(--primary);
     }
 
     .bg-primary {
-        background-color: hsl(46, 56%, 64%);
+        background-color: var(--primary);
     }
 
     @variants hover {
         .text-primary {
-            color: hsl(46, 56%, 64%);
+            color: var(--primary);
         }
 
         .border-color-primary {
-            border-color: hsl(46, 56%, 64%);
+            border-color: var(--primary);
         }
 
         .bg-primary {
-            background-color: hsl(46, 56%, 64%);
+            background-color: var(--primary);
         }
     }
 }

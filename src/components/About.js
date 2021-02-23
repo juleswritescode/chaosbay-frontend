@@ -2,28 +2,33 @@ import React from 'react';
 import { SRLWrapper } from 'simple-react-lightbox';
 import BlockContent from '@sanity/block-content-to-react';
 import Img from 'gatsby-image';
+import AccessibleHeading from './AccessibleHeading';
 
 import Divider from './Divider';
 
-const About = ({ h, textStyle, headingStyle, content = {} }) => {
+const About = ({ textStyle, headingStyle, content = {} }) => {
     return (
         <SRLWrapper>
-            <h3 className={`font-semibold mb-2 text-2xl ${headingStyle}`}>
+            <AccessibleHeading
+                level={2}
+                targetId="navigation"
+                className={`font-semibold mb-2 text-2xl ${headingStyle}`}
+            >
                 {content.heading}
-            </h3>
+            </AccessibleHeading>
             <Divider />
             <Img alt="Chaosbay" fluid={content.mainImage?.asset?.fluid} />
             <Divider />
-            <div className={textStyle}>
+            <article className={textStyle}>
                 <BlockContent blocks={content.text} />
-            </div>
+            </article>
             <br />
             <br />
-            <div
+            <figure
                 className={textStyle + ' border-l-2 border-white pl-4 lg:mb-20'}
             >
                 <BlockContent blocks={content.quote} />
-            </div>
+            </figure>
         </SRLWrapper>
     );
 };

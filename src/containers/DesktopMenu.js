@@ -2,10 +2,6 @@ import React, { forwardRef, useState, Suspense } from 'react';
 import Shell from './Shell';
 
 import Loading from '../components/Loading';
-// import About from '../components/About';
-// import Dates from '../components/Dates';
-// import Media from '../components/Media';
-// import Contact from '../components/Contact';
 import { onKey } from '../utils/onKey';
 
 const About = React.lazy(() => import('../components/About'));
@@ -31,33 +27,45 @@ const DesktopMenu = forwardRef(
         return (
             <>
                 <nav
+                    tabIndex="-1"
                     ref={ref}
+                    id="navigation"
                     className="w-full mx-auto py-4 px-20 bg-black bg-opacity-75 rounded border-t-4 border-color-primary shadow-lg invisible"
                 >
-                    <ul className="uppercase flex items-center justify-around text-white font-medium w-auto">
+                    <ul className="flex items-center justify-around text-white w-auto">
                         <li
                             onClick={setActiveMenu('about')}
-                            onKeyDown={onKey('Enter', setActiveMenu, 'about')}
+                            onKeyUp={onKey('Enter', setActiveMenu, 'about')}
                             id="about"
-                            className={`${
-                                active === 'about'
-                                    ? 'border-color-primary'
-                                    : 'hover:border-color-primary'
-                            } transition duration-300 cursor-pointer border-b-4 border-transparent  mx-10 font-light tracking-wider`}
                         >
-                            About
+                            <button
+                                className={`
+                                    nav-button  
+                                ${
+                                    active === 'about'
+                                        ? 'border-color-primary'
+                                        : 'hover:border-color-primary'
+                                }`}
+                            >
+                                About
+                            </button>
                         </li>
                         <li
                             onClick={setActiveMenu('dates')}
-                            onKeyDown={onKey('Enter', setActiveMenu, 'dates')}
+                            onKeyUp={onKey('Enter', setActiveMenu, 'dates')}
                             id="dates"
-                            className={`${
-                                active === 'dates'
-                                    ? 'border-color-primary'
-                                    : 'hover:border-color-primary'
-                            } transition duration-300 cursor-pointer border-b-4 border-transparent  mx-10 font-light tracking-wider`}
                         >
-                            Dates
+                            <button
+                                className={`
+                                nav-button 
+                                ${
+                                    active === 'dates'
+                                        ? 'border-color-primary'
+                                        : 'hover:border-color-primary'
+                                }`}
+                            >
+                                Dates
+                            </button>
                         </li>
                         <a
                             href={data.album?.link}
@@ -80,25 +88,35 @@ const DesktopMenu = forwardRef(
                             onClick={setActiveMenu('media')}
                             onKeyDown={onKey('Enter', setActiveMenu, 'media')}
                             id="media"
-                            className={`${
-                                active === 'media'
-                                    ? 'border-color-primary'
-                                    : 'hover:border-color-primary'
-                            } transition duration-300 cursor-pointer border-b-4 border-transparent mx-10 font-light tracking-wider`}
                         >
-                            Media
+                            <button
+                                className={`
+                                nav-button 
+                                ${
+                                    active === 'media'
+                                        ? 'border-color-primary'
+                                        : 'hover:border-color-primary'
+                                }`}
+                            >
+                                Media
+                            </button>
                         </li>
                         <li
                             id="contact"
                             onClick={setActiveMenu('contact')}
                             onKeyDown={onKey('Enter', setActiveMenu, 'contact')}
-                            className={`${
-                                active === 'contact'
-                                    ? 'border-color-primary'
-                                    : 'hover:border-color-primary'
-                            } transition duration-300 cursor-pointer border-b-4 border-transparent mx-10 font-light tracking-wider`}
                         >
-                            Contact
+                            <button
+                                className={`
+                                nav-button 
+                                ${
+                                    active === 'contact'
+                                        ? 'border-color-primary'
+                                        : 'hover:border-color-primary'
+                                }`}
+                            >
+                                Contact
+                            </button>
                         </li>
                     </ul>
                 </nav>

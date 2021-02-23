@@ -3,6 +3,20 @@
     scrollbar-width: none;
 }
 
+*:focus-visible,
+a:focus-visible svg {
+    outline: 2px solid var(--primary) !important;
+    outline-color: var(--primary);
+    outline-offset: 0.2rem;
+    transition: 300ms;
+}
+
+button:focus,
+button:visited,
+button:active {
+    outline: none;
+}
+
 *::-webkit-scrollbar {
     display: none;
 }

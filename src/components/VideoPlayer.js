@@ -14,7 +14,7 @@ const VideoPlayer = ({ url }) => {
     }, [videoEl]);
 
     return (
-        <div className="w-full mb-4" ref={videoEl}>
+        <li className="w-full mb-4" ref={videoEl}>
             {loading && <Loading />}
             <ReactPlayer
                 width="100%"
@@ -31,7 +31,7 @@ const VideoPlayer = ({ url }) => {
                     },
                 }}
             />
-        </div>
+        </li>
     );
 };
 

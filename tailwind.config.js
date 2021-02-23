@@ -14,6 +14,7 @@ module.exports = {
         animation: ['responsive', 'hover'],
         borderStyle: ['responsive', 'hover'],
         borderWidth: ['responsive', 'hover'],
+        opacity: ['focus-visible'],
     },
     plugins: [],
 };

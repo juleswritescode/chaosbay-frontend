@@ -4,6 +4,7 @@ import { SiBandsintown } from 'react-icons/si';
 import ChaosbayEvent from './ChaosbayEvent';
 import Divider from './Divider';
 import Loading from './Loading';
+import AccessibleHeading from './AccessibleHeading';
 import { onKey } from '../utils/onKey';
 
 let upcomingEventCache = [];
@@ -48,39 +49,41 @@ const Dates = ({ headingStyle, linkStyle }) => {
     }, [eventsFilter]);
 
     return (
-        <aside className="w-full">
-            <h3
+        <section className="w-full">
+            <AccessibleHeading
+                targetId="navigation"
+                level="2"
+                className={`font-semibold text-xl ${headingStyle}`}
+            >
+                Tour Dates
+            </AccessibleHeading>
+            <aside
                 className={
-                    'text-white text-center fixed top-0 left-0 p-4' +
+                    'text-white text-center fixed top-0 left-0 p-6' +
                     ' ' +
                     linkStyle
                 }
             >
-                <span
+                <button
                     className={`
                             ${eventsFilter === 'upcoming' && 'text-primary'}
                             cursor-pointer hover:text-primary`}
                     onClick={() => setEventsFilter('upcoming')}
                     onKeyDown={onKey('Enter', setEventsFilter, 'upcoming')}
-                    role="button"
                 >
                     {'Upcoming'}
-                </span>
+                </button>
                 <span className="mx-2">|</span>
-                <span
+                <button
                     className={`
                             ${eventsFilter === 'past' && 'text-primary'}
                             cursor-pointer hover:text-primary`}
                     onClick={() => setEventsFilter('past')}
                     onKeyDown={onKey('Enter', setEventsFilter, 'past')}
-                    role="button"
                 >
                     {'Past'}
-                </span>
-            </h3>
-            <h3 className={`font-semibold text-xl ${headingStyle}`}>
-                Tour Dates
-            </h3>
+                </button>
+            </aside>
             <Divider />
             {loading ? (
                 <Loading />
@@ -89,16 +92,18 @@ const Dates = ({ headingStyle, linkStyle }) => {
                     There are currently no events scheduled.
                 </h3>
             ) : (
-                events.map(event => (
-                    <ChaosbayEvent
-                        key={event.id}
-                        event={event}
-                        eventsFilter={eventsFilter}
-                    />
-                ))
+                <ul>
+                    {events.map(event => (
+                        <ChaosbayEvent
+                            key={event.id}
+                            event={event}
+                            eventsFilter={eventsFilter}
+                        />
+                    ))}
+                </ul>
             )}
             <Divider />
-            <div className="my-4 lg:flex justify-between w-full">
+            <aside className="my-4 lg:flex justify-between w-full">
                 <a
                     className="text-center w-full lg:w-auto inline-block text-primary px-6 py-3 hover:text-white border-color-primary border-2 transition duration-300 uppercase"
                     href="https://www.bandsintown.com/a/2470074-chaosbay?affil_code=js_1729869.site123.me&app_id=js_1729869.site123.me&came_from=242&trigger=play_my_city&utm_campaign=play_my_city&utm_medium=web&utm_source=widget"
@@ -106,11 +111,11 @@ const Dates = ({ headingStyle, linkStyle }) => {
                     <span className="hidden lg:inline-block">Should we</span>{' '}
                     Play in your city?
                 </a>
-                <div className="px-4 mt-8 lg:mt-0">
+                <div aria-hidden="true" className="px-4 mt-8 lg:mt-0">
                     <SiBandsintown className="text-gray-800 lg:text-gray-300 opacity-75 w-8 h-8" />
                 </div>
-            </div>
-        </aside>
+            </aside>
+        </section>
     );
 };
 

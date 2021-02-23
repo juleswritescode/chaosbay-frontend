@@ -3,6 +3,7 @@ import { onKey } from '../utils/onKey';
 import Img from 'gatsby-image';
 import { SRLWrapper } from 'simple-react-lightbox';
 import { FaArrowCircleRight } from 'react-icons/fa';
+import AccessibleHeading from './AccessibleHeading';
 
 import VideoPlayer from './VideoPlayer';
 import Divider from './Divider';
@@ -16,15 +17,23 @@ const Media = ({ headingStyle, linkStyle, content = {} }) => {
 
     return (
         <>
-            <aside className="relative lg:pb-20">
-                <h3
+            <section className="relative lg:pb-20">
+                <AccessibleHeading
+                    level="2"
+                    targetId="navigation"
+                    id="heading"
+                    className={`font-semibold mb-2 text-xl ${headingStyle}`}
+                >
+                    Media
+                </AccessibleHeading>
+                <aside
                     className={
                         'text-white text-center fixed top-0 left-0 p-4' +
                         ' ' +
                         linkStyle
                     }
                 >
-                    <span
+                    <button
                         className={`
                             ${displayedMedia === 'video' && 'text-primary'}
                             cursor-pointer hover:text-primary`}
@@ -32,9 +41,9 @@ const Media = ({ headingStyle, linkStyle, content = {} }) => {
                         onKeyDown={onKey('Enter', setDisplayedMedia, 'video')}
                     >
                         {'Videos'}
-                    </span>
+                    </button>
                     <span className="mx-2">|</span>
-                    <span
+                    <button
                         className={`
                             ${displayedMedia === 'photo' && 'text-primary'}
                             cursor-pointer hover:text-primary`}
@@ -42,21 +51,15 @@ const Media = ({ headingStyle, linkStyle, content = {} }) => {
                         onKeyDown={onKey('Enter', setDisplayedMedia, 'photo')}
                     >
                         {'Photos'}
-                    </span>
-                </h3>
-                <h3
-                    id="heading"
-                    className={`font-semibold mb-2 text-xl ${headingStyle}`}
-                >
-                    Media
-                </h3>
+                    </button>
+                </aside>
                 <Divider />
                 {displayedMedia === 'video' && (
-                    <div id="video">
+                    <ul id="video">
                         {content.videoLinks?.map(link => (
                             <VideoPlayer key={link} url={link} />
                         ))}
-                    </div>
+                    </ul>
                 )}
                 {displayedMedia === 'photo' && (
                     <SRLWrapper
@@ -66,28 +69,31 @@ const Media = ({ headingStyle, linkStyle, content = {} }) => {
                             },
                         }}
                     >
-                        <div id="photo">
+                        <ul id="photo">
                             {content.images?.map(({ asset }) => (
-                                <Img
-                                    className="mb-4 cursor-pointer "
-                                    alt="Chaosbay"
-                                    fluid={asset?.fluid}
-                                    key={asset?.fluid}
-                                />
+                                <li>
+                                    <Img
+                                        className="mb-4 cursor-pointer "
+                                        alt="Chaosbay"
+                                        fluid={asset?.fluid}
+                                        key={asset?.fluid?.src}
+                                    />
+                                </li>
                             ))}
-                        </div>
+                        </ul>
                     </SRLWrapper>
                 )}
-                <h3 className="hidden lg:block text-white text-center absolute bottom-0 left-0 p-4 cursor-pointer hover:text-primary">
+                <aside className="hidden lg:block text-white text-center absolute bottom-0 left-0 p-4 cursor-pointer hover:text-primary">
                     <FaArrowCircleRight className="inline-block mb-1 mr-2" />
-                    <span
+                    <button
+                        aria-label="Back to Top"
                         onKeyDown={onKey('Enter', scrollTo, 'past')}
                         onClick={() => scrollTo('heading')}
                     >
                         Top
-                    </span>
-                </h3>
-            </aside>
+                    </button>
+                </aside>
+            </section>
         </>
     );
 };
