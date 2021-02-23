@@ -6,13 +6,17 @@ import AccessibleHeading from './AccessibleHeading';
 
 import Divider from './Divider';
 
-const About = ({ textStyle, headingStyle, content = {} }) => {
+const About = ({ textStyle, isMobile, content = {} }) => {
     return (
         <SRLWrapper>
             <AccessibleHeading
                 level={2}
                 targetId="navigation"
-                className={`font-semibold mb-2 text-2xl ${headingStyle}`}
+                className={`font-semibold mb-2 text-2xl ${
+                    isMobile
+                        ? 'text-center'
+                        : 'text-white text-2xl text-center uppercase tracking-wider'
+                }`}
             >
                 {content.heading}
             </AccessibleHeading>

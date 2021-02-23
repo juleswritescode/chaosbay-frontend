@@ -11,7 +11,7 @@ let upcomingEventCache = [];
 let pastEventCache = [];
 let eventFilterCache = '';
 
-const Dates = ({ headingStyle, linkStyle }) => {
+const Dates = ({ isMobile, linkStyle }) => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [eventsFilter, setEventsFilter] = useState(
@@ -53,7 +53,9 @@ const Dates = ({ headingStyle, linkStyle }) => {
             <AccessibleHeading
                 targetId="navigation"
                 level="2"
-                className={`font-semibold text-xl ${headingStyle}`}
+                className={`font-semibold mb-2 text-white text-2xl text-center uppercase tracking-wider ${
+                    isMobile && 'opacity-0 mb-0'
+                }`}
             >
                 Tour Dates
             </AccessibleHeading>

@@ -1,10 +1,17 @@
-import React from "react";
-import Logo from "./Logo";
+import React from 'react';
+import Logo from './Logo';
 
 const Loading = () => {
+    const reduceMotion =
+        typeof window !== undefined &&
+        matchMedia('(prefers-reduced-motion: reduce)');
     return (
         <div className="w-full h-40 flex justify-center items-center">
-            <Logo className="w-32 h-32 animate-spin text-primary" />
+            {reduceMotion ? (
+                <h2 className="text-primary">Loading...</h2>
+            ) : (
+                <Logo className="w-32 h-32 animate-spin text-primary" />
+            )}
         </div>
     );
 };

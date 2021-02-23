@@ -28,13 +28,13 @@ const MobileAlbumButton = ({ album }) => {
                         albumOpen ? 'mt-10 mb-4' : 'my-10'
                     } text-center cursor-pointer rounded pb-4 pt-5 bg-black border-4 border-color-primary hover:text-black shadow-lg`}
                 >
-                    <span
+                    <button
                         className={`${
                             !albumOpen && 'animate-pulse'
                         } text-white group-hover:text-black text-2xl font-semibold leading-none`}
                     >
                         {album.buttonText || 'Asylum'}
-                    </span>
+                    </button>
                 </li>
             )}
             {albumOpen && (

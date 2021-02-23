@@ -51,53 +51,60 @@ const MobileMenu = ({ toggle, data }) => {
             ref={wrapperEl}
             className="lg:hidden absolute top-0 left-0 z-20 w-full min-h-full transform translate-y-full py-16 px-8 bg-black bg-opacity-50 border-t-4 border-color-primary"
         >
-            {/* Close Icon */}
             <VscClose
+                role="button"
+                aria-label="close menu"
                 onClick={toggle}
                 onKeyDown={onKey('Enter', toggle)}
                 className="w-12 h-12 absolute top-0 left-0 pl-4 pt-4 cursor-pointer text-white"
             />
             <SocialIcons textColor={'text-white'} />
-            <ul className="uppercase tracking-wider text-gray-800 text-xl font-medium">
+            <ul
+                id="navigation"
+                className="uppercase tracking-wider text-gray-800 text-xl font-medium"
+            >
                 <MobileAlbumButton album={data.album} />
-                <li
-                    role="button"
-                    id="about"
-                    onClick={openMenuItem('about')}
-                    onKeyDown={onKey('Enter', openMenuItem, 'about')}
-                    className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3  my-4"
-                >
-                    About
+                <li className="mt-2">
+                    <button
+                        id="about"
+                        onClick={openMenuItem('about')}
+                        onKeyUp={onKey('Enter', openMenuItem, 'about')}
+                        className="w-full text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3 my-2"
+                    >
+                        About
+                    </button>
                 </li>
                 {active === 'about' && (
-                    <li role="button">
+                    <li>
                         <MobileShell>
                             <Suspense fallback={<Loading />}>
                                 <About
                                     content={data.about}
                                     w={500}
                                     h={500}
-                                    headingStyle={'text-center'}
+                                    isMobile={true}
                                     textStyle={'about-text'}
                                 />
                             </Suspense>
                         </MobileShell>
                     </li>
                 )}
-                <li
-                    role="button"
-                    id="dates"
-                    onClick={openMenuItem('dates')}
-                    onKeyDown={onKey('Enter', openMenuItem, 'dates')}
-                    className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3  my-4"
-                >
-                    Dates
+                <li>
+                    <button
+                        id="dates"
+                        onClick={openMenuItem('dates')}
+                        onKeyDown={onKey('Enter', openMenuItem, 'dates')}
+                        className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3 w-full  my-2"
+                    >
+                        Dates
+                    </button>
                 </li>
                 {active === 'dates' && (
-                    <li role="button">
+                    <li>
                         <MobileShell>
                             <Suspense fallback={<Loading />}>
                                 <Dates
+                                    isMobile={true}
                                     headingStyle={'invisible mb-0'}
                                     linkStyle={
                                         'text-gray-900 w-full text-center mt-2'
@@ -107,21 +114,23 @@ const MobileMenu = ({ toggle, data }) => {
                         </MobileShell>
                     </li>
                 )}
-                <li
-                    role="button"
-                    id="media"
-                    onClick={openMenuItem('media')}
-                    onKeyDown={onKey('Enter', openMenuItem, 'media')}
-                    className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3  my-4"
-                >
-                    Media
+                <li>
+                    <button
+                        id="media"
+                        onClick={openMenuItem('media')}
+                        onKeyDown={onKey('Enter', openMenuItem, 'media')}
+                        className="text-center w-full rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3  my-2"
+                    >
+                        Media
+                    </button>
                 </li>
                 {active === 'media' && (
-                    <li role="button">
+                    <li>
                         <MobileShell>
                             <Suspense fallback={<Loading />}>
                                 <Media
                                     content={data.media}
+                                    isMobile={true}
                                     headingStyle={'invisible mb-0'}
                                     linkStyle={
                                         'text-gray-900 w-full text-center mt-2'
@@ -131,17 +140,18 @@ const MobileMenu = ({ toggle, data }) => {
                         </MobileShell>
                     </li>
                 )}
-                <li
-                    role="button"
-                    id="contact"
-                    onClick={openMenuItem('contact')}
-                    onKeyDown={onKey('Enter', openMenuItem, 'contact')}
-                    className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3  my-4"
-                >
-                    Contact
+                <li>
+                    <button
+                        id="contact"
+                        onClick={openMenuItem('contact')}
+                        onKeyDown={onKey('Enter', openMenuItem, 'contact')}
+                        className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide w-full bg-gray-100 py-3 my-2"
+                    >
+                        Contact
+                    </button>
                 </li>
                 {active === 'contact' && (
-                    <li role="button">
+                    <li>
                         <MobileShell>
                             <Suspense fallback={<Loading />}>
                                 <Contact />

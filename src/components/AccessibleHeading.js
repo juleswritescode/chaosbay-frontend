@@ -5,8 +5,8 @@ const AccessibleHeading = ({
     className,
     level = 1,
     children,
-    targetId,
-    id,
+    targetId = 'navigation',
+    id = '',
 }) => {
     const Heading = `h${level}`;
     const trapFocus = useCallback(focusElement({ childSelector: 'a' }), []);

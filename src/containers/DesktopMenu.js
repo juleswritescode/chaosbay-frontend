@@ -131,9 +131,6 @@ const DesktopMenu = forwardRef(
                                     textStyle={
                                         'text-white text-md font-light font-raleway tracking-wide text-justify'
                                     }
-                                    headingStyle={
-                                        'text-white text-2xl text-center uppercase tracking-wider'
-                                    }
                                 />
                             )}
 

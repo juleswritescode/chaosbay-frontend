@@ -52,165 +52,180 @@ function App({ data }) {
 
         const tl = gsap.timeline();
 
-        // Setting standards
-        tl.set(heading, {
-            opacity: 0,
-            autoAlpha: 0,
-        })
-
-            .set(overlay, {
-                opacity: 0,
-            })
-
-            .set(logo, {
-                rotation: -50,
-                scale: 0.8,
-                opacity: 0.1,
-                filter: 'brightness(50%)',
-            })
-
-            .set(menu, {
-                x: '105%',
-                autoAlpha: 0,
-            })
-
-            .set(div, {
-                x: '-105%',
-                top: '90%',
-            })
-
-            .set(button, {
-                autoAlpha: 0,
-                y: 100,
-            })
-
-            .set(social, {
+        const makeVisible = {
+            opacity: 1,
+            autoAlpha: 1,
+        };
+        if (isBrowser() && matchMedia('(prefers-reduced-motion: reduce')) {
+            tl.set(heading, makeVisible)
+                .set(overlay, makeVisible)
+                .set(logo, makeVisible)
+                .set(menu, makeVisible)
+                .set(div, { ...makeVisible, top: '90%' })
+                .set(social, { opacity: 0.8, autoAlpha: 0.8 })
+                .set(line, makeVisible)
+                .set(impressum, makeVisible);
+        } else {
+            // Setting standards
+            tl.set(heading, {
                 opacity: 0,
                 autoAlpha: 0,
             })
-            .set(impressum, {
-                opacity: 0,
-            })
-            .set(line, {
-                x: '-100%',
-            })
 
-            // Actual Animation
-            .addLabel('logo-onscreen')
-            .to(
-                logo,
-                {
-                    rotation: 20,
-                    scale: 1.2,
-                    duration: 3,
-                    opacity: 1,
-                    ease: 'power1',
-                },
-                'logo-onscreen+=0'
-            )
-            .addLabel('logo-appeared')
-            .to(
-                logo,
-                {
-                    rotation: 0,
-                    scale: 1,
-                    opacity: 0.75,
-                    duration: 2,
-                    filter: 'brightness(100%)',
-                    ease: 'power1',
-                },
-                'logo-appeared+=0'
-            )
-            .to(
-                overlay,
-                {
-                    opacity: 1,
-                    duration: 1.5,
-                },
-                'logo-appeared+=0'
-            )
-            .to(
-                heading,
-                {
-                    opacity: 1,
-                    autoAlpha: 1,
-                    duration: 4,
-                },
-                'logo-appeared+=0.8'
-            )
-            .to(
-                menu,
-                {
-                    x: '0%',
-                    duration: 3,
-                    ease: 'power1',
-                    autoAlpha: 1,
-                },
-                'logo-appeared+=1'
-            )
-            .to(
-                div,
-                {
-                    x: '0%',
-                    duration: 3,
-                    ease: 'power1',
-                },
-                'logo-appeared+=1'
-            )
-            .to(
-                button,
-                {
-                    autoAlpha: 1,
-                    y: 0,
-                    duration: 2.5,
-                    ease: 'power2',
-                },
-                'logo-appeared'
-            )
-            .to(
-                social,
-                {
-                    y: 0,
-                    opacity: 0.8,
-                    duration: 2,
-                    autoAlpha: 0.8,
-                },
-                'logo-appeared'
-            )
-            .to(
-                impressum,
-                {
-                    opacity: 1,
-                    duration: 1,
-                },
-                'logo-appeared'
-            )
-            .to(
-                line,
-                {
-                    x: 0,
-                    duration: 1,
-                    ease: 'power2',
-                },
-                'logo-appeared+=1.3'
-            )
-            .addLabel('intro-finished')
-            .to(logo, {
-                rotation: 180,
-                duration: 60,
-                repeat: -1,
-                yoyo: true,
-            })
-            .to(
-                heading,
-                {
-                    scale: 0.95,
-                    duration: 8,
+                .set(overlay, {
+                    opacity: 0,
+                })
+
+                .set(logo, {
+                    rotation: -50,
+                    scale: 0.8,
+                    opacity: 0.1,
+                    filter: 'brightness(50%)',
+                })
+
+                .set(menu, {
+                    x: '105%',
+                    autoAlpha: 0,
+                })
+
+                .set(div, {
+                    x: '-105%',
+                    top: '90%',
+                })
+
+                .set(button, {
+                    autoAlpha: 0,
+                    y: 100,
+                })
+
+                .set(social, {
+                    opacity: 0,
+                    autoAlpha: 0,
+                })
+                .set(impressum, {
+                    opacity: 0,
+                })
+                .set(line, {
+                    x: '-100%',
+                })
+
+                // Actual Animation
+                .addLabel('logo-onscreen')
+                .to(
+                    logo,
+                    {
+                        rotation: 20,
+                        scale: 1.2,
+                        duration: 3,
+                        opacity: 1,
+                        ease: 'power1',
+                    },
+                    'logo-onscreen+=0'
+                )
+                .addLabel('logo-appeared')
+                .to(
+                    logo,
+                    {
+                        rotation: 0,
+                        scale: 1,
+                        opacity: 0.75,
+                        duration: 2,
+                        filter: 'brightness(100%)',
+                        ease: 'power1',
+                    },
+                    'logo-appeared+=0'
+                )
+                .to(
+                    overlay,
+                    {
+                        opacity: 1,
+                        duration: 1.5,
+                    },
+                    'logo-appeared+=0'
+                )
+                .to(
+                    heading,
+                    {
+                        opacity: 1,
+                        autoAlpha: 1,
+                        duration: 4,
+                    },
+                    'logo-appeared+=0.8'
+                )
+                .to(
+                    menu,
+                    {
+                        x: '0%',
+                        duration: 3,
+                        ease: 'power1',
+                        autoAlpha: 1,
+                    },
+                    'logo-appeared+=1'
+                )
+                .to(
+                    div,
+                    {
+                        x: '0%',
+                        duration: 3,
+                        ease: 'power1',
+                    },
+                    'logo-appeared+=1'
+                )
+                .to(
+                    button,
+                    {
+                        autoAlpha: 1,
+                        y: 0,
+                        duration: 2.5,
+                        ease: 'power2',
+                    },
+                    'logo-appeared'
+                )
+                .to(
+                    social,
+                    {
+                        y: 0,
+                        opacity: 0.8,
+                        duration: 2,
+                        autoAlpha: 0.8,
+                    },
+                    'logo-appeared'
+                )
+                .to(
+                    impressum,
+                    {
+                        opacity: 1,
+                        duration: 1,
+                    },
+                    'logo-appeared'
+                )
+                .to(
+                    line,
+                    {
+                        x: 0,
+                        duration: 1,
+                        ease: 'power2',
+                    },
+                    'logo-appeared+=1.3'
+                )
+                .addLabel('intro-finished')
+                .to(logo, {
+                    rotation: 180,
+                    duration: 60,
                     repeat: -1,
                     yoyo: true,
-                },
-                'intro-finished+=0'
-            );
+                })
+                .to(
+                    heading,
+                    {
+                        scale: 0.95,
+                        duration: 8,
+                        repeat: -1,
+                        yoyo: true,
+                    },
+                    'intro-finished+=0'
+                );
+        }
     }, []);
 
     function moveMenuToTop() {

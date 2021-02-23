@@ -14,6 +14,7 @@ const SocialIcons = forwardRef(({ textColor, isFrontScreen }, ref) => (
     >
         <li className="mx-3">
             <a
+                aria-label="facebook link"
                 className="hover:text-primary"
                 href="https://www.facebook.com/chaosbay"
             >
@@ -22,6 +23,7 @@ const SocialIcons = forwardRef(({ textColor, isFrontScreen }, ref) => (
         </li>
         <li className="mx-3">
             <a
+                aria-label="youtube link"
                 className="hover:text-primary"
                 href="https://www.youtube.com/user/Chaosbay"
             >
@@ -30,6 +32,7 @@ const SocialIcons = forwardRef(({ textColor, isFrontScreen }, ref) => (
         </li>
         <li className="mx-3">
             <a
+                aria-label="instagram link"
                 className="hover:text-primary"
                 href="https://www.instagram.com/chaosbayofficial"
             >
