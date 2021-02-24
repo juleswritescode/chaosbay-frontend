@@ -4,7 +4,8 @@ import Logo from './Logo';
 const Loading = () => {
     const reduceMotion =
         typeof window !== undefined &&
-        matchMedia('(prefers-reduced-motion: reduce)');
+        matchMedia('(prefers-reduced-motion: reduce)').matches;
+
     return (
         <div className="w-full h-40 flex justify-center items-center">
             {reduceMotion ? (

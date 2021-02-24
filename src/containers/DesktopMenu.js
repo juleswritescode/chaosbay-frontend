@@ -76,10 +76,10 @@ const DesktopMenu = forwardRef(
                             <li
                                 className={`transition duration-300 cursor-pointer border-b-4 border-transparent hover:border-color-primary mx-10 flex flex-col text-center animate-pulse`}
                             >
-                                <span className="font-medium">
+                                <span className="uppercase font-medium">
                                     {data.album?.catchPhrase}
                                 </span>
-                                <span className="font-medium text-2xl text-primary leading-none pb-2">
+                                <span className="uppercase font-medium text-2xl text-primary leading-none pb-2">
                                     {data.album?.name}
                                 </span>
                             </li>
