@@ -56,7 +56,10 @@ function App({ data }) {
             opacity: 1,
             autoAlpha: 1,
         };
-        if (isBrowser() && matchMedia('(prefers-reduced-motion: reduce)')) {
+        if (
+            isBrowser() &&
+            matchMedia('(prefers-reduced-motion: reduce)').matches
+        ) {
             tl.set(heading, makeVisible)
                 .set(overlay, makeVisible)
                 .set(logo, makeVisible)
