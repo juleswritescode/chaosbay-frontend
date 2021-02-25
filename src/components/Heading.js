@@ -2,6 +2,7 @@ import React, { forwardRef } from 'react';
 
 const SvgComponent = forwardRef((props, ref) => (
     <svg
+        aria-hidden="true"
         ref={ref}
         fill="currentColor"
         width={1212.58}

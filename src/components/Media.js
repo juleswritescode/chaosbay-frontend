@@ -17,7 +17,7 @@ const Media = ({ headingStyle, linkStyle, content = {} }) => {
 
     return (
         <>
-            <section className="relative lg:pb-20">
+            <div className="relative lg:pb-20">
                 <AccessibleHeading
                     level="2"
                     targetId="navigation"
@@ -93,7 +93,7 @@ const Media = ({ headingStyle, linkStyle, content = {} }) => {
                         Top
                     </button>
                 </aside>
-            </section>
+            </div>
         </>
     );
 };

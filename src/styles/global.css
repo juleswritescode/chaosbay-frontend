@@ -13,6 +13,14 @@
     @apply uppercase font-medium transition duration-300 cursor-pointer border-b-4 border-transparent mx-10 font-light tracking-wider;
 }
 
+.access-button {
+    @apply sr-only;
+}
+
+.access-button:focus-visible {
+    @apply not-sr-only bg-primary py-2 px-4 text-gray-800 fixed m-4;
+}
+
 @layer utilities {
     .h-screen {
         height: 100vh;

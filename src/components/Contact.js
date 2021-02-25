@@ -17,6 +17,7 @@ const Contact = ({ headingStyle }) => {
         email: '',
         message: '',
     });
+    const [ariaMessage, setAriaMessage] = useState('');
     const [missingInputs, setMissingInputs] = useState({});
 
     const sendMail = e => {
@@ -25,14 +26,18 @@ const Contact = ({ headingStyle }) => {
         const { email, message, name } = formFields;
         if (!name.trim()) {
             setMissingInputs({ name: true });
+            ariaMessage('Name is not valid.');
             return;
         }
         if (!email.trim() || !validator.isEmail(email)) {
             setMissingInputs({ email: true });
+            ariaMessage('Email is not valid.');
+            return;
             return;
         }
         if (!message.trim()) {
             setMissingInputs({ message: true });
+            ariaMessage('Message is not valid.');
             return;
         }
 
@@ -41,19 +46,38 @@ const Contact = ({ headingStyle }) => {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: encode({ 'form-name': 'contact', ...formFields }),
         })
-            .then(response => console.log('Form Submitted', response))
-            .catch(console.error);
+            .then(onSubmitSucces)
+            .catch(onSubmitError);
 
-        setButtonText('Thank You!');
+        function onSubmitSucces() {
+            setButtonText('Thank You!');
+            setAriaMessage('Message received! Thank you.');
+            restoreButtonText();
+        }
 
-        setTimeout(() => {
-            setButtonText('Send');
-            setFormFields({
-                message: '',
-                email: '',
-                name: '',
-            });
-        }, 2000);
+        function onSubmitError() {
+            setButtonText("Can't reach the server!");
+            setAriaMessage('Something went wrong. It is not your fault.');
+            restoreButtonText();
+        }
+
+        function ariaMessage(msg) {
+            setAriaMessage(msg);
+            setTimeout(() => {
+                setAriaMessage('');
+            }, 3000);
+        }
+
+        function restoreButtonText() {
+            setTimeout(() => {
+                setButtonText('Send');
+                setFormFields({
+                    message: '',
+                    email: '',
+                    name: '',
+                });
+            }, 2000);
+        }
     };
 
     return (
@@ -68,7 +92,10 @@ const Contact = ({ headingStyle }) => {
             <form onSubmit={sendMail}>
                 <input
                     name="name"
+                    aria-label="Name"
                     type="text"
+                    autocomplete="false"
+                    aria-autocomplete="false"
                     className={`w-full my-2 py-3 px-2 rounded border-2 border-transparent ${
                         missingInputs.name ? 'border-red-400' : ''
                     }`}
@@ -82,8 +109,11 @@ const Contact = ({ headingStyle }) => {
                     }
                 />
                 <input
+                    aria-label="Email"
                     name="email"
                     type="text"
+                    autocomplete="false"
+                    aria-autocomplete="false"
                     className={`w-full my-2 py-3 px-2 rounded border-2 border-transparent ${
                         missingInputs.email ? 'border-red-400' : ''
                     }`}
@@ -97,6 +127,9 @@ const Contact = ({ headingStyle }) => {
                     }
                 />
                 <textarea
+                    autocomplete="false"
+                    aria-autocomplete="false"
+                    aria-label="message"
                     name="message"
                     placeholder="Your message..."
                     value={formFields.message}
@@ -112,10 +145,19 @@ const Contact = ({ headingStyle }) => {
                 ></textarea>
                 <button
                     type="submit"
+                    data-testid="btn"
                     className="mt-4 bg-primary rounded-lg shadow-md mx-auto px-8 py-2 text-white outline-none"
                 >
                     {buttonText}
                 </button>
+                <div
+                    className="sr-only"
+                    aria-live="assertive"
+                    aria-relevant="additions"
+                    aria-atomic="true"
+                >
+                    {ariaMessage ? ariaMessage : ''}
+                </div>
             </form>
         </>
     );

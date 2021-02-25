@@ -7,6 +7,7 @@ const AccessibleHeading = ({
     children,
     targetId = 'navigation',
     id = '',
+    ariaLabel = 'Article Heading',
 }) => {
     const Heading = `h${level}`;
     const trapFocus = useCallback(focusElement({ childSelector: 'a' }), []);
@@ -20,11 +21,15 @@ const AccessibleHeading = ({
         >
             <a
                 href={`#${targetId}`}
-                aria-label="skip to navigation"
+                aria-label="Back to Navigation"
                 className="absolute -ml-4 opacity-0 focus-visible:opacity-100"
             >
                 &laquo;
             </a>
+            <span
+                aria-label={ariaLabel + '. Start Reading'}
+                className="sr-only"
+            ></span>
             {children}
         </Heading>
     );

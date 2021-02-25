@@ -47,7 +47,7 @@ const MobileMenu = ({ toggle, data }) => {
     };
 
     return (
-        <section
+        <main
             ref={wrapperEl}
             className="lg:hidden absolute top-0 left-0 z-20 w-full min-h-full transform translate-y-full py-16 px-8 bg-black bg-opacity-50 border-t-4 border-color-primary"
         >
@@ -66,6 +66,8 @@ const MobileMenu = ({ toggle, data }) => {
                 <MobileAlbumButton album={data.album} />
                 <li className="mt-2">
                     <button
+                        aria-haspopup="true"
+                        aria-expanded="false"
                         id="about"
                         onClick={openMenuItem('about')}
                         onKeyUp={onKey('Enter', openMenuItem, 'about')}
@@ -93,6 +95,8 @@ const MobileMenu = ({ toggle, data }) => {
                     <button
                         id="dates"
                         onClick={openMenuItem('dates')}
+                        aria-haspopup="true"
+                        aria-expanded="false"
                         onKeyDown={onKey('Enter', openMenuItem, 'dates')}
                         className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3 w-full  my-2"
                     >
@@ -117,6 +121,8 @@ const MobileMenu = ({ toggle, data }) => {
                 <li>
                     <button
                         id="media"
+                        aria-haspopup="true"
+                        aria-expanded="false"
                         onClick={openMenuItem('media')}
                         onKeyDown={onKey('Enter', openMenuItem, 'media')}
                         className="text-center w-full rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3  my-2"
@@ -143,6 +149,8 @@ const MobileMenu = ({ toggle, data }) => {
                 <li>
                     <button
                         id="contact"
+                        aria-haspopup="true"
+                        aria-expanded="false"
                         onClick={openMenuItem('contact')}
                         onKeyDown={onKey('Enter', openMenuItem, 'contact')}
                         className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide w-full bg-gray-100 py-3 my-2"
@@ -168,7 +176,7 @@ const MobileMenu = ({ toggle, data }) => {
             >
                 Impressum
             </a>
-        </section>
+        </main>
     );
 };
 

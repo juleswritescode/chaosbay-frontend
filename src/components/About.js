@@ -23,16 +23,18 @@ const About = ({ textStyle, isMobile, content = {} }) => {
             <Divider />
             <Img alt="Chaosbay" fluid={content.mainImage?.asset?.fluid} />
             <Divider />
-            <article className={textStyle}>
-                <BlockContent blocks={content.text} />
-            </article>
+            <BlockContent
+                blocks={content.text}
+                className={textStyle}
+                renderContainerOnSingleChild={true}
+            />
             <br />
             <br />
-            <figure
+            <BlockContent
+                blocks={content.quote}
                 className={textStyle + ' border-l-2 border-white pl-4 lg:mb-20'}
-            >
-                <BlockContent blocks={content.quote} />
-            </figure>
+                renderContainerOnSingleChild={true}
+            />
         </SRLWrapper>
     );
 };

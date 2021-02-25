@@ -2,7 +2,6 @@ import React, { forwardRef, useState, Suspense } from 'react';
 import Shell from './Shell';
 
 import Loading from '../components/Loading';
-import { onKey } from '../utils/onKey';
 
 const About = React.lazy(() => import('../components/About'));
 const Contact = React.lazy(() => import('../components/Contact'));
@@ -33,12 +32,18 @@ const DesktopMenu = forwardRef(
                     className="w-full mx-auto py-4 px-20 bg-black bg-opacity-75 rounded border-t-4 border-color-primary shadow-lg invisible"
                 >
                     <ul className="flex items-center justify-around text-white w-auto">
-                        <li
-                            onClick={setActiveMenu('about')}
-                            onKeyUp={onKey('Enter', setActiveMenu, 'about')}
-                            id="about"
-                        >
+                        <li>
                             <button
+                                aria-haspopup="true"
+                                aria-expanded={
+                                    active == 'about' ? 'true' : 'false'
+                                }
+                                aria-label={
+                                    active != 'about'
+                                        ? 'About'
+                                        : 'Close Content. To read, navigate to the end of navigation.'
+                                }
+                                onClick={setActiveMenu('about')}
                                 className={`
                                     nav-button  
                                 ${
@@ -50,12 +55,18 @@ const DesktopMenu = forwardRef(
                                 About
                             </button>
                         </li>
-                        <li
-                            onClick={setActiveMenu('dates')}
-                            onKeyUp={onKey('Enter', setActiveMenu, 'dates')}
-                            id="dates"
-                        >
+                        <li>
                             <button
+                                aria-label={
+                                    active != 'dates'
+                                        ? 'Dates'
+                                        : 'Close Content. To read, navigate to the end of navigation.'
+                                }
+                                aria-haspopup="true"
+                                aria-expanded={
+                                    active == 'dates' ? 'true' : 'false'
+                                }
+                                onClick={setActiveMenu('dates')}
                                 className={`
                                 nav-button 
                                 ${
@@ -67,14 +78,15 @@ const DesktopMenu = forwardRef(
                                 Dates
                             </button>
                         </li>
-                        <a
-                            href={data.album?.link}
-                            rel="noreferrer"
-                            target="_blank"
-                            className="select-none"
+                        <li
+                            className={`transition duration-300 cursor-pointer border-b-4 border-transparent hover:border-color-primary mx-10 text-center animate-pulse`}
                         >
-                            <li
-                                className={`transition duration-300 cursor-pointer border-b-4 border-transparent hover:border-color-primary mx-10 flex flex-col text-center animate-pulse`}
+                            <a
+                                href={data.album?.link}
+                                rel="noreferrer"
+                                target="_blank"
+                                className="select-none flex flex-col"
+                                aria-label={`External link to ${data.album?.name}`}
                             >
                                 <span className="uppercase font-medium">
                                     {data.album?.catchPhrase}
@@ -82,14 +94,20 @@ const DesktopMenu = forwardRef(
                                 <span className="uppercase font-medium text-2xl text-primary leading-none pb-2">
                                     {data.album?.name}
                                 </span>
-                            </li>
-                        </a>
-                        <li
-                            onClick={setActiveMenu('media')}
-                            onKeyDown={onKey('Enter', setActiveMenu, 'media')}
-                            id="media"
-                        >
+                            </a>
+                        </li>
+                        <li>
                             <button
+                                aria-label={
+                                    active != 'media'
+                                        ? 'Media'
+                                        : 'Close Content. To read, navigate to the end of navigation.'
+                                }
+                                onClick={setActiveMenu('media')}
+                                aria-haspopup="true"
+                                aria-expanded={
+                                    active == 'media' ? 'true' : 'false'
+                                }
                                 className={`
                                 nav-button 
                                 ${
@@ -101,12 +119,18 @@ const DesktopMenu = forwardRef(
                                 Media
                             </button>
                         </li>
-                        <li
-                            id="contact"
-                            onClick={setActiveMenu('contact')}
-                            onKeyDown={onKey('Enter', setActiveMenu, 'contact')}
-                        >
+                        <li>
                             <button
+                                aria-label={
+                                    active != 'contact'
+                                        ? 'Contact'
+                                        : 'Close Content. To read, navigate to the end of navigation.'
+                                }
+                                onClick={setActiveMenu('contact')}
+                                aria-haspopup="true"
+                                aria-expanded={
+                                    active == 'contact' ? 'true' : 'false'
+                                }
                                 className={`
                                 nav-button 
                                 ${
@@ -126,6 +150,7 @@ const DesktopMenu = forwardRef(
                             {active == 'about' && (
                                 <About
                                     content={data.about}
+                                    ariaLabel="About"
                                     w={2000}
                                     h={2000}
                                     textStyle={
@@ -136,6 +161,7 @@ const DesktopMenu = forwardRef(
 
                             {active == 'dates' && (
                                 <Dates
+                                    ariaLabel="Dates"
                                     headingStyle={
                                         'text-white text-2xl text-center uppercase tracking-wider'
                                     }
@@ -144,6 +170,7 @@ const DesktopMenu = forwardRef(
                             )}
                             {active == 'media' && (
                                 <Media
+                                    ariaLabel="Media"
                                     content={data.media}
                                     headingStyle={
                                         'text-white text-2xl text-center uppercase tracking-wider'
@@ -152,6 +179,7 @@ const DesktopMenu = forwardRef(
                             )}
                             {active == 'contact' && (
                                 <Contact
+                                    ariaLabel="Contact"
                                     headingStyle={
                                         'text-white text-2xl uppercase tracking-tight'
                                     }

@@ -11,7 +11,7 @@ let upcomingEventCache = [];
 let pastEventCache = [];
 let eventFilterCache = '';
 
-const Dates = ({ isMobile, linkStyle }) => {
+const Dates = ({ isMobile = false, linkStyle }) => {
     const [events, setEvents] = useState([]);
     const [loading, setLoading] = useState(true);
     const [eventsFilter, setEventsFilter] = useState(
@@ -49,7 +49,7 @@ const Dates = ({ isMobile, linkStyle }) => {
     }, [eventsFilter]);
 
     return (
-        <section className="w-full">
+        <>
             <AccessibleHeading
                 targetId="navigation"
                 level="2"
@@ -72,18 +72,20 @@ const Dates = ({ isMobile, linkStyle }) => {
                             cursor-pointer hover:text-primary`}
                     onClick={() => setEventsFilter('upcoming')}
                     onKeyDown={onKey('Enter', setEventsFilter, 'upcoming')}
+                    aria-label="Upcoming Events"
                 >
-                    {'Upcoming'}
+                    Upcoming
                 </button>
                 <span className="mx-2">|</span>
                 <button
+                    aria-label="Past Events"
                     className={`
                             ${eventsFilter === 'past' && 'text-primary'}
                             cursor-pointer hover:text-primary`}
                     onClick={() => setEventsFilter('past')}
                     onKeyDown={onKey('Enter', setEventsFilter, 'past')}
                 >
-                    {'Past'}
+                    Past
                 </button>
             </aside>
             <Divider />
@@ -117,7 +119,7 @@ const Dates = ({ isMobile, linkStyle }) => {
                     <SiBandsintown className="text-gray-800 lg:text-gray-300 opacity-75 w-8 h-8" />
                 </div>
             </aside>
-        </section>
+        </>
     );
 };
 

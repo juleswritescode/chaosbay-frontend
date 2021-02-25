@@ -14,12 +14,12 @@ const MobileShell = ({ children }) => {
     }, []);
 
     return (
-        <article
+        <section
             ref={shellEl}
             className="bg-gray-200 rounded text-gray-900 normal-case px-6 py-8 font-light tracking-tight leading-tight transform scale-y-0 origin-top relative"
         >
             {children}
-        </article>
+        </section>
     );
 };
 

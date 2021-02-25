@@ -4,12 +4,14 @@ import DateTime from 'luxon/src/datetime.js';
 const ChaosbayEvent = ({ event, eventsFilter }) => {
     return (
         <li className="flex flex-col lg:flex-row justify-between items-center w-full border-2 border-color-primary px-4 py-4 my-6">
+            <p className="sr-only">{eventsFilter + ' event'}</p>
             <div>
                 <p className="text-gray-900 lg:text-white lg:tracking-wider font-light">
                     {DateTime.fromISO(event.datetime).toLocaleString({
-                        weekday: 'short',
+                        weekday: 'long',
                         month: 'short',
                         day: '2-digit',
+                        year: '2-digit',
                         locale: 'en-US',
                     })}
                 </p>
@@ -21,6 +23,11 @@ const ChaosbayEvent = ({ event, eventsFilter }) => {
             </div>
             <a
                 href={event.url}
+                aria-label={
+                    eventsFilter === 'upcoming'
+                        ? 'Get tickets on external page'
+                        : 'Show that I was there on external page'
+                }
                 className="w-full flex-shrink-0 lg:w-auto text-center bg-primary text-white px-6 py-3 hover:bg-transparent hover:text-primary hover:border-color-primary border-2 border-transparent transition duration-300 font-medium tracking-wider"
             >
                 {eventsFilter === 'upcoming' ? 'Get Tickets' : 'I Was There'}
