@@ -328,7 +328,7 @@ function App({ data }) {
                         target="_blank"
                     >
                         Impressum
-                        <span clasName="sr-only">open on external page</span>
+                        <span className="sr-only">open on external page</span>
                     </a>
                 )}
             </div>
