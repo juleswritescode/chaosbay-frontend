@@ -302,6 +302,8 @@ function App({ data }) {
                 {/* Mobile Button */}
                 {!mobileMenu && (
                     <button
+                        aria-haspopup="true"
+                        aria-expanded={mobileMenu}
                         onClick={() => setMobileMenu(true)}
                         ref={buttonEl}
                         className={`lg:hidden inline-block text-center absolute bottom-0 w-full pb-4 text-gray-700 text-lg uppercase tracking-widest font-semibold focus:bg-primary focus:text-black transition duration-100 `}
@@ -326,6 +328,7 @@ function App({ data }) {
                         target="_blank"
                     >
                         Impressum
+                        <span clasName="sr-only">open on external page</span>
                     </a>
                 )}
             </div>

@@ -22,13 +22,14 @@ const MobileAlbumButton = ({ album }) => {
         <>
             {album.useButton && (
                 <li
-                    onClick={() => setAlbumOpen(!albumOpen)}
-                    onKeyDown={onKey('Enter', setAlbumOpen, o => !o)}
                     className={`${
                         albumOpen ? 'mt-10 mb-4' : 'my-10'
                     } text-center cursor-pointer rounded pb-4 pt-5 bg-black border-4 border-color-primary hover:text-black shadow-lg`}
                 >
                     <button
+                        aria-haspopup="true"
+                        aria-expanded={albumOpen}
+                        onClick={() => setAlbumOpen(!albumOpen)}
                         className={`${
                             !albumOpen && 'animate-pulse'
                         } text-white group-hover:text-black text-2xl font-semibold leading-none`}
@@ -46,17 +47,17 @@ const MobileAlbumButton = ({ album }) => {
                             fluid={album.artwork?.asset?.fluid}
                         />
                         <div className="bg-black bg-opacity-50 h-full w-full text-center">
-                            <p className="pt-3 animate-pulse">
+                            <h3 className="pt-3 animate-pulse">
                                 <span className="font-light text-white">
                                     {album.catchPhrase}{' '}
                                 </span>
                                 <span className="font-semibold text-primary">
                                     {album.name}
                                 </span>
-                                <h3 className="mt-0 leading-none text-white text-center w-full pb-5">
+                                <p className="mt-0 leading-none text-white text-center w-full pb-5">
                                     Buy Now
-                                </h3>
-                            </p>
+                                </p>
+                            </h3>
                         </div>
                     </a>
                 </li>

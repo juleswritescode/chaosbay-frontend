@@ -54,9 +54,10 @@ const MobileMenu = ({ toggle, data }) => {
             <VscClose
                 role="button"
                 aria-label="close menu"
+                tabIndex="0"
                 onClick={toggle}
                 onKeyDown={onKey('Enter', toggle)}
-                className="w-12 h-12 absolute top-0 left-0 pl-4 pt-4 cursor-pointer text-white"
+                className="w-8 h-8 absolute top-0 left-0 ml-4 mt-4 cursor-pointer text-white"
             />
             <SocialIcons textColor={'text-white'} />
             <ul
@@ -67,10 +68,14 @@ const MobileMenu = ({ toggle, data }) => {
                 <li className="mt-2">
                     <button
                         aria-haspopup="true"
-                        aria-expanded="false"
+                        aria-label={
+                            active == 'about'
+                                ? 'Close Content. Navigate further to read.'
+                                : 'about'
+                        }
+                        aria-expanded={active == 'about'}
                         id="about"
                         onClick={openMenuItem('about')}
-                        onKeyUp={onKey('Enter', openMenuItem, 'about')}
                         className="w-full text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3 my-2"
                     >
                         About
@@ -93,11 +98,15 @@ const MobileMenu = ({ toggle, data }) => {
                 )}
                 <li>
                     <button
+                        aria-label={
+                            active == 'dates'
+                                ? 'Close Content. Navigate further to read.'
+                                : 'dates'
+                        }
                         id="dates"
                         onClick={openMenuItem('dates')}
                         aria-haspopup="true"
-                        aria-expanded="false"
-                        onKeyDown={onKey('Enter', openMenuItem, 'dates')}
+                        aria-expanded={active == 'dates'}
                         className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3 w-full  my-2"
                     >
                         Dates
@@ -120,11 +129,15 @@ const MobileMenu = ({ toggle, data }) => {
                 )}
                 <li>
                     <button
+                        aria-label={
+                            active == 'media'
+                                ? 'Close Content. Navigate further to read.'
+                                : 'media'
+                        }
                         id="media"
                         aria-haspopup="true"
-                        aria-expanded="false"
+                        aria-expanded={active == 'media'}
                         onClick={openMenuItem('media')}
-                        onKeyDown={onKey('Enter', openMenuItem, 'media')}
                         className="text-center w-full rounded border-color-primary shadow-inner text-gray-900 tracking-wide bg-gray-100 py-3  my-2"
                     >
                         Media
@@ -148,11 +161,15 @@ const MobileMenu = ({ toggle, data }) => {
                 )}
                 <li>
                     <button
+                        aria-label={
+                            active == 'contact'
+                                ? 'Close Content. Navigate further to read.'
+                                : 'contact'
+                        }
                         id="contact"
                         aria-haspopup="true"
-                        aria-expanded="false"
+                        aria-expanded={active == 'contact'}
                         onClick={openMenuItem('contact')}
-                        onKeyDown={onKey('Enter', openMenuItem, 'contact')}
                         className="text-center rounded border-color-primary shadow-inner text-gray-900 tracking-wide w-full bg-gray-100 py-3 my-2"
                     >
                         Contact
@@ -175,6 +192,7 @@ const MobileMenu = ({ toggle, data }) => {
                 className="bottom-0 right-0 p-4 text-xs text-white uppercase tracking-wider "
             >
                 Impressum
+                <span className="sr-only">Open on new page</span>
             </a>
         </main>
     );
