@@ -126,7 +126,7 @@ export default function SEO() {
   manifest.icons[1].src = seo.icon.asset.square512.src;
 
   let manifestUrl;
-  if (typeof window != undefined) {
+  if (typeof window != 'undefined') {
     const stringified = JSON.stringify(manifest);
     const blob = new Blob([stringified], { type: 'application/json' });
     manifestUrl = URL.createObjectURL(blob);
