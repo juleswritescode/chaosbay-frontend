@@ -125,9 +125,12 @@ export default function SEO() {
   manifest.icons[0].src = seo.icon.asset.square192.src;
   manifest.icons[1].src = seo.icon.asset.square512.src;
 
-  const stringified = JSON.stringify(manifest);
-  const blob = new Blob([stringified], { type: 'application/json' });
-  const manifestUrl = URL.createObjectURL(blob);
+  let manifestUrl;
+  if (typeof window != undefined) {
+    const stringified = JSON.stringify(manifest);
+    const blob = new Blob([stringified], { type: 'application/json' });
+    manifestUrl = URL.createObjectURL(blob);
+  }
 
   return (
     <Helmet defaultTitle="Chaosbay" titleTemplate="Chaosbay | %s">
